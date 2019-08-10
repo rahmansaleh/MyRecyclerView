@@ -1,22 +1,32 @@
 package com.example.myrecyclerview
 
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.example.myrecyclerview.model.Hero
 
-class GridHeroAdapter : RecyclerView.Adapter<GridHeroAdapter.GridViewHolder>() {
+class GridHeroAdapter(val listHero: ArrayList<Hero>) : RecyclerView.Adapter<GridHeroAdapter.GridViewHolder>() {
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): GridHeroAdapter.GridViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val view: View = LayoutInflater.from(p0.context).inflate(R.layout.item_grid_hero, p0, false)
+        return GridViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return listHero.size
     }
 
     override fun onBindViewHolder(p0: GridHeroAdapter.GridViewHolder, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Glide.with(p0.itemView.context)
+            .load(listHero[p1].photo)
+            .into(p0.imgPhoto)
     }
 
-    inner class GridViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class GridViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
+    }
 
 }
