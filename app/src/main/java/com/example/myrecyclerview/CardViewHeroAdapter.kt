@@ -13,6 +13,13 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.myrecyclerview.model.Hero
 
 class CardViewHeroAdapter(private val listHeros: ArrayList<Hero>) : RecyclerView.Adapter<CardViewHeroAdapter.CardViewHolder>() {
+
+    private lateinit var onItemClickCallBack: OnItemClickCallBack
+
+    fun setOnItemClickCallBack(onItemClickCallBack: OnItemClickCallBack) {
+        this.onItemClickCallBack = onItemClickCallBack
+    }
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): CardViewHolder {
         val view: View = LayoutInflater.from(p0.context).inflate(R.layout.item_cardview_hero, p0, false)
         return CardViewHolder(view)
@@ -48,6 +55,10 @@ class CardViewHeroAdapter(private val listHeros: ArrayList<Hero>) : RecyclerView
         val btnShare: Button = itemView.findViewById(R.id.btn_set_share)
         val tvName: TextView = itemView.findViewById(R.id.tv_item_name)
         val tvFrom: TextView = itemView.findViewById(R.id.tv_item_from)
+    }
+
+    interface OnItemClickCallBack {
+        fun onItemClicked(data: Hero)
     }
 
 }
