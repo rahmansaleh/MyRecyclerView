@@ -77,6 +77,12 @@ class MainActivity : AppCompatActivity() {
         rvHeroes.layoutManager = LinearLayoutManager(this)
         val cardViewHeroAdapter = CardViewHeroAdapter(list)
         rvHeroes.adapter = cardViewHeroAdapter
+
+        cardViewHeroAdapter.setOnItemClickCallBack(object : CardViewHeroAdapter.OnItemClickCallBack{
+            override fun onItemClicked(data: Hero) {
+                showSelectedHero(data)
+            }
+        })
     }
 
     private fun setMode(selectedMenu: Int) {
