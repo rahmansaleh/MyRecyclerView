@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         list.addAll(HeroesData.listData)
         showRecyclerList()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
