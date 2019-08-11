@@ -65,6 +65,12 @@ class MainActivity : AppCompatActivity() {
         rvHeroes.layoutManager = GridLayoutManager(this, 2)
         val gridHeroAdapter = GridHeroAdapter(list)
         rvHeroes.adapter = gridHeroAdapter
+
+        gridHeroAdapter.setOnItemClickCallBack(object: GridHeroAdapter.OnItemClickCallBack{
+            override fun onItemCLicked(data: Hero) {
+                showSelectedHero(data)
+            }
+        })
     }
 
     private fun showRecyclerCardView() {
